@@ -1,36 +1,50 @@
 package scanner3000;
 
-import java.util.Scanner;
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-        int threads;
+    public static void main(String[] args) throws InterruptedException, IOException {
+
         //scan -h evlentev.ru, 2232 -p 32400, 2320,32,32,56454,454,32400
 
+
+        Properties props = new Properties();
+        props.load(new FileInputStream("src/main/resources/log4j.properties"));
+        PropertyConfigurator.configure(props);
+
+
+
+        List<Result> results = Collections.synchronizedList(new ArrayList<>());
+
+
+
         Scanner sc = new Scanner(System.in);
-        //Writer.out("Port scanner 3000:");
+
         System.out.println("Port scanner 3000:");
 
-      //  Object
 
         while (true) {
 
-            ScanResult.results.clear();
+            results.clear();
             String cmd = sc.nextLine();
 
             String[] hosts;
             String[] ports;
+            int threads;
 
             try {
-                hosts = cmd.substring(cmd.indexOf("-h") + 2, cmd.indexOf("-p") - 1).replaceAll(" ", "").split(",");
-                if(!cmd.contains("-t")){
-                    cmd = cmd.concat(" -t 1");
-                }
-                ports = cmd.substring(cmd.indexOf("-p") + 2, cmd.indexOf("-t") - 1).replaceAll(" ", "").split(",");
-                threads = Integer.parseInt(cmd.substring(cmd.indexOf("-t") + 2).replaceAll(" ", ""));
-
+                hosts = Data.parseHosts(cmd);
+                ports = Data.parsePorts(cmd);
+                threads = Data.parseThreads(cmd);
 
                 if (hosts[0].isEmpty() || ports[0].isEmpty()) {
                     if (hosts[0].isEmpty()) {
@@ -41,17 +55,12 @@ public class Main {
                     }
                 } else {
 
-                    System.out.println("Start scaning...");
-
-                    PortScanner.start(hosts, ports, threads);
-
-                    System.out.println("Scanning successful!");
-
-
-                    WriteFile.toJson("output.json");
+                    PortScanner.start(hosts, ports, threads, results);
+                    Data.toJson("output.json", results);
 
                 }
             } catch (Exception e) {
+                logger.error("Incorrect format!\nUse this format -> #scan -h hostname -p port -t k-threads");
                 System.err.println("Incorrect format!\nUse this format -> #scan -h hostname -p port -t k-threads");
             }
 

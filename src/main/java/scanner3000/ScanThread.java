@@ -3,27 +3,28 @@ package scanner3000;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.concurrent.CountDownLatch;
+import java.util.List;
 
 class ScanThread implements Runnable{
 
 
+    private List<Result> results;
     private String host;
     private String port;
     private int timeOut;
-    private CountDownLatch countDownLatch;
 
-    public ScanThread(String host, String port, int timeOut,  CountDownLatch countDownLatch) {
+
+    public ScanThread(String host, String port, int timeOut, List<Result> results) {
         this.host = host;
         this.port = port;
         this.timeOut = timeOut;
-        this.countDownLatch = countDownLatch;
-
+        this.results = results;
     }
 
     @Override
     public void run() {
 
+        System.out.println( this.host );
 
         boolean status = false;
         try {
@@ -33,20 +34,15 @@ class ScanThread implements Runnable{
 
             socket.close();
 
-
-
         } catch (IOException e) {
             status = false;
         } finally {
+            synchronized (this) {
 
-        synchronized (this) {
+                System.out.println(this.host + ":" + this.port + " [" + status + "]");
+                this.results.add(new Result(host, port, status));
 
-            System.out.println(this.host + ":" + this.port + " [" + status + "]");
-            ScanResult.results.add(new Result(host, port, status));
-            countDownLatch.countDown();
-        }
-
-
+            }
         }
 
 

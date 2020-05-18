@@ -1,0 +1,64 @@
+2020-05-18 17:29:30 INFO  PortScanner:50 - Completed task count: 13
+2020-05-18 17:29:30 INFO  WriteFile:30 - Written to file output.json
+2020-05-18 17:38:44 INFO  PortScanner:50 - Completed task count: 1
+2020-05-18 17:41:06 INFO  PortScanner:50 - Completed task count: 0
+2020-05-18 17:41:43 INFO  PortScanner:50 - Completed task count: 1
+2020-05-18 17:42:43 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:43:00 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:43:30 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:44:05 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:44:11 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:44:30 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:44:59 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:45:17 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:45:43 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:46:52 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:47:00 INFO  PortScanner:51 - Completed task count: 2
+2020-05-18 17:47:11 INFO  PortScanner:51 - Completed task count: 5
+2020-05-18 17:48:16 INFO  PortScanner:51 - Completed task count: 2
+2020-05-18 17:48:27 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:49:10 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:49:20 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:49:31 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:49:44 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:49:52 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:49:58 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:08 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:11 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:12 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:14 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:18 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:22 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:50:24 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:50:28 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:52:14 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 17:52:29 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 17:52:44 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:00:53 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:01:11 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:01:16 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:02:52 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:03:12 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:04:03 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:05:50 INFO  PortScanner:51 - Completed task count: 0
+2020-05-18 18:07:45 INFO  PortScanner:51 - Completed task count: 2
+2020-05-18 18:08:05 INFO  PortScanner:51 - Completed task count: 2
+2020-05-18 18:08:16 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:09:20 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:09:33 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:09:39 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 18:09:48 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 19:55:56 ERROR Main:80 - Incorrect format!
+Use this format -> #scan -h hostname -p port -t k-threads
+2020-05-18 19:56:38 INFO  Main:68 - Start scaning...
+2020-05-18 19:56:38 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 19:56:38 INFO  Main:72 - Scanning successful!
+2020-05-18 19:56:38 INFO  Data:30 - Written to file output.json
+2020-05-18 20:25:25 ERROR Main:80 - Incorrect format!
+Use this format -> #scan -h hostname -p port -t k-threads
+2020-05-18 20:26:05 ERROR Main:80 - Incorrect format!
+Use this format -> #scan -h hostname -p port -t k-threads
+2020-05-18 20:28:05 INFO  Main:68 - Start scaning...
+2020-05-18 20:28:05 INFO  PortScanner:51 - Completed task count: 1
+2020-05-18 20:28:05 INFO  Main:72 - Scanning successful!
+2020-05-18 20:28:05 INFO  Data:30 - Written to file output.json
