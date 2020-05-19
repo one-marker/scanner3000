@@ -3,7 +3,7 @@ import scanner3000.Data;
 
 public class TestData {
 
-    String cmd = "scan -h evlentev.ru, yadndex.ru -p 32400-32402, 80 -t 2";
+    String cmd = "scan -h evlentev.ru, yadndex.ru -p 32400-32402, 80 -t 1";
 
     @Test
     public void testHostParser(){
@@ -59,7 +59,7 @@ public class TestData {
     }
     @Test
     public void testThreadParser(){
-        int threadCorrect = 2;
+        int threadCorrect = 1;
         try {
 
             int thread = Data.parseThreads(cmd);
