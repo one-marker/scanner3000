@@ -5,6 +5,9 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.List;
 
+/**
+ * This class is used to implement scanning of a network section in a separate stream.
+ */
 class ScanThread implements Runnable{
 
 
@@ -13,7 +16,13 @@ class ScanThread implements Runnable{
     private String port;
     private int timeOut;
 
-
+    /**
+     * Constructor for creating a separate thread
+     * @param host
+     * @param port
+     * @param timeOut
+     * @param results
+     */
     public ScanThread(String host, String port, int timeOut, List<Result> results) {
         this.host = host;
         this.port = port;
@@ -21,6 +30,11 @@ class ScanThread implements Runnable{
         this.results = results;
     }
 
+    /**
+     * Run network scan in a separate thread.
+     * Scanning is done by establishing a connection.
+     * If the connection could not be established, the port on the scanned host is closed
+     */
     @Override
     public void run() {
 

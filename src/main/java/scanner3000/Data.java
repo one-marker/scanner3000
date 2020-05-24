@@ -9,21 +9,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The Data class is used to store a static method for processing data.
+ */
 public class Data {
-    private static final Logger logger = LoggerFactory.getLogger(Data.class);
-
 
     /**
-     *
-     * @param fileneame
-     * @param results
+     * Сreate a logger object
      */
-    public static void toJson(String fileneame, List<Result> results){
+    private static final Logger logger = LoggerFactory.getLogger(Data.class);
+
+    /**
+     * This method converts the input list into the JSON format and saves it to a file located on the path <strong>filename</strong>
+     * @param filename The path where the JSON file is saved
+     * @param results Scan Results List
+     */
+    public static void toJson(String filename, List<Result> results){
         Gson gson = new Gson();
         JsonObject rootObject = new JsonObject();
         rootObject.add("Scan result", gson.toJsonTree(results));
 
-        try(FileWriter writer = new FileWriter(fileneame, false))
+        try(FileWriter writer = new FileWriter(filename, false))
         {
             writer.write(gson.toJson(rootObject));
             writer.flush();
@@ -33,8 +39,8 @@ public class Data {
             System.err.println(ex.getMessage());
         }
         finally {
-            logger.info("Written to file " + fileneame);
-            System.out.println("Written to file " + fileneame);
+            logger.info("Written to file " + filename);
+            System.out.println("Written to file " + filename);
         }
 
     }

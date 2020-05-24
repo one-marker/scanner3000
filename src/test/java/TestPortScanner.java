@@ -2,41 +2,71 @@ import org.junit.Assert;
 import org.junit.Test;
 import scanner3000.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-public class TestPortScanner {
+public class TestPortScanner extends Assert {
 
 
-
-
+    List<Result> actualResults = Collections.synchronizedList(new ArrayList<>());
+    List<Result> expectedResults = Collections.synchronizedList(new ArrayList<>());
     @Test
-    public void testScan() throws InterruptedException {
-        System.out.println("Test");
+    public void twoHostTest() throws InterruptedException {
 
-        List<Result> resultsCorrect = Collections.synchronizedList(new ArrayList<>());
-        resultsCorrect.add(new Result("google.com", "80", true));
-        resultsCorrect.add(new Result("yandex.ru", "80", true));
-        List<Result> results = Collections.synchronizedList(new ArrayList<>());
 
+
+        expectedResults.add(new Result("google.com", "80", true));
+        expectedResults.add(new Result("yandex.ru", "80", true));
         String[] hosts = {"google.com","yandex.ru"};
         String[] ports = {"80"};
-        PortScanner.start(hosts, ports, 1, results);
+
+        new PortScanner().start(hosts, ports, 1, actualResults);
 
         Thread.sleep(100);
-        System.out.println(results);
-        System.out.println(resultsCorrect);
-        System.out.println(results.equals(resultsCorrect));
 
-//        Iterator<Result> iterator = results.iterator();
-//        Iterator<Result> iteratorCorrect = resultsCorrect.iterator();
-//
-//        while (iterator.hasNext()){
-//            System.out.println(iterator.next().toString());
-//            //System.out.println(iterator.next().equals(iteratorCorrect.next()));
-//        }
+        assertEquals(Arrays.asList(expectedResults),
+                Arrays.asList(actualResults));
+        actualResults.clear();
+        expectedResults.clear();
 
     }
+
+    @Test
+    public void portRangeTest() throws InterruptedException {
+
+        expectedResults.add(new Result("google.com", "80", true));
+        expectedResults.add(new Result("google.com", "81", false));
+        String[] hosts = {"google.com"};
+        String[] ports = {"80-81"};
+
+        new PortScanner().start(hosts, ports, 1, actualResults);
+
+        Thread.sleep(100);
+
+        assertEquals(Arrays.asList(expectedResults),
+                Arrays.asList(actualResults));
+        actualResults.clear();
+        expectedResults.clear();
+    }
+
+    @Test
+    public void portRangeFailTest() throws InterruptedException {
+
+        expectedResults.add(new Result("google.com", "81", false));
+        expectedResults.add(new Result("google.com", "82", false));
+        String[] hosts = {"google.com"};
+        String[] ports = {"81-82"};
+
+        new PortScanner().start(hosts, ports, 1, actualResults);
+
+        Thread.sleep(100);
+
+        assertEquals(Arrays.asList(expectedResults),
+                Arrays.asList(actualResults));
+        actualResults.clear();
+        expectedResults.clear();
+    }
+
+
+
+
 }

@@ -9,14 +9,35 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * PortScanner is a class that implements multi-threaded scanning.
+ */
 public class PortScanner {
 
     private static final Logger logger = LoggerFactory.getLogger(PortScanner.class);
 
-    private static int timeOut = 100;
-    private static int poolSize = 1;
+    /**
+     * This is the time in milliseconds that is allocated for connecting to a host on a specific port, otherwise the port on this host will be marked as blocked.
+     */
+    private int timeOut = 100;
 
-    public static void start(String[] hosts, String[] ports, int otherPoolSize, List<Result> results) throws InterruptedException {
+    /**
+     * Thread Pool Size
+     */
+    private int poolSize = 1;
+
+    /**
+     * This method starts scanning the network with the specified parameters.
+     * Multi-threaded scanning is implemented by splitting all tasks into separate subtasks <strong>ScanThread</strong> that can work in separate threads.
+     *  <strong>ScanThread</strong> are placed in the LinkedBlockingQueue queue.
+     * This queue is passed to the thread pool, the size of which can vary depending on the otherPoolSize parameter.
+     * @param hosts Hosts for scanning
+     * @param ports Ports for scanning
+     * @param otherPoolSize Thread Pool Size. This parameter shows how many threads we allocate to scan the network.
+     * @param results
+     * @throws InterruptedException If an exception is thrown then failed to put the task in LinkedBlockingQueue<Runnable>
+     */
+    public void start(String[] hosts, String[] ports, int otherPoolSize, List<Result> results) throws InterruptedException {
 
         System.out.println("Start scaning...");
         logger.info("Start scaning...");

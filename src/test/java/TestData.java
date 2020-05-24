@@ -1,79 +1,29 @@
+import org.junit.Assert;
 import org.junit.Test;
 import scanner3000.Data;
 
-public class TestData {
+public class TestData extends Assert {
 
     String cmd = "scan -h evlentev.ru, yadndex.ru -p 32400-32402, 80 -t 1";
 
     @Test
-    public void testHostParser(){
+    public void testHostParser() throws Exception{
 
         String[] hostCorrect = {"evlentev.ru", "yadndex.ru"};
-        try {
-
-            String[] hosts = Data.parseHosts(cmd);
-            if (hostCorrect.length == hosts.length) {
-                for (int i = 0; i < hostCorrect.length ; i++) {
-
-                    if (hostCorrect[i].equals(hosts[i])){
-                        System.out.println("wait " + hostCorrect[i] + " result " + hosts[i] + " [TRUE]");
-                    } else {
-                        System.out.println("wait " + hostCorrect[i] + " result " + hosts[i] + " [FALSE]");
-                    }
-
-
-                }
-            } else {
-                System.out.println("Array sizes have different lengths");
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String[] hosts = Data.parseHosts(cmd);
+        assertEquals(hostCorrect, hosts);
     }
     @Test
-    public void testPostParser(){
+    public void testPostParser() throws Exception {
         String[] portCorrect = {"32400-32402", "80"};
-        try {
-
-            String[] ports = Data.parsePorts(cmd);
-
-            if (portCorrect.length == ports.length) {
-                for (int i = 0; i < portCorrect.length ; i++) {
-
-                    if (portCorrect[i].equals(ports[i])){
-                        System.out.println("wait " + portCorrect[i] + " result " + ports[i] + " [TRUE]");
-                    } else {
-                        System.out.println("wait " + portCorrect[i] + " result " + ports[i] + " [FALSE]");
-                    }
-                }
-            } else {
-                System.out.println("Array sizes have different lengths");
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String[] ports = Data.parsePorts(cmd);
+        assertEquals(portCorrect, ports);
     }
     @Test
-    public void testThreadParser(){
+    public void testThreadParser() throws Exception{
         int threadCorrect = 1;
-        try {
+        int thread = Data.parseThreads(cmd);
+        assertEquals(threadCorrect,thread);
 
-            int thread = Data.parseThreads(cmd);
-
-            if (threadCorrect == thread) {
-                System.out.println("wait " + threadCorrect + " result " + thread + " [TRUE]");
-
-            } else {
-                System.out.println("wait " + threadCorrect + " result " + thread + " [FALSE]");
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -2,10 +2,18 @@ package scanner3000;
 
 import java.util.Objects;
 
+
+/**
+ * This class is a special data type, the instance of which contains the result of scanning one port on one host
+ */
 public class Result {
 
     private String hostname;
     private String port;
+
+    /**
+     * Host connection status.
+     */
     private boolean status;
 
     /**

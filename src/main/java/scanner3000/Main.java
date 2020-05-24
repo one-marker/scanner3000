@@ -8,18 +8,31 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * The main entry point to the program
+ */
 public class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
+    /**
+     * The main entry point to the program. This is where the processing of user commands takes place.
+     * Next, the command type is transferred to the Port Scanner, which will add the scan results to the list of results.
+     * Next, this list of results will be recorded in a file.
+     * @param args
+     * @throws InterruptedException
+     * @throws IOException
+     */
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        //scan -h evlentev.ru, 2232 -p 32400, 2320,32,32,56454,454,32400
+        //scan -h yandex.ru -p 80-100, 101 -t 1
 
 
+        //connecting log4j settings
         Properties props = new Properties();
         props.load(new FileInputStream("src/main/resources/log4j.properties"));
         PropertyConfigurator.configure(props);
+
 
 
 
@@ -55,7 +68,7 @@ public class Main {
                     }
                 } else {
 
-                    PortScanner.start(hosts, ports, threads, results);
+                    new PortScanner().start(hosts, ports, threads, results);
                     Data.toJson("output.json", results);
 
                 }
