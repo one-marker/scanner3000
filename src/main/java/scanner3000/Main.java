@@ -25,7 +25,8 @@ public class Main {
      */
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        //scan -h yandex.ru -p 80-100, 101 -t 1
+        //scan -h yande x.ru -p 80-100, 101 -t 1
+
 
 
         //connecting log4j settings

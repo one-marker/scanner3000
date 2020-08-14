@@ -109,3 +109,7 @@ Use this format -> #scan -h hostname -p port -t k-threads
 2020-05-24 15:40:04 INFO  PortScanner:43 - Start scaning...
 2020-05-24 15:40:05 INFO  PortScanner:75 - Completed task count: 1
 2020-05-24 15:40:05 INFO  PortScanner:83 - Scanning successful!
+2020-05-29 13:07:52 INFO  PortScanner:43 - Start scaning...
+2020-05-29 13:07:54 INFO  PortScanner:75 - Completed task count: 21
+2020-05-29 13:07:54 INFO  PortScanner:83 - Scanning successful!
+2020-05-29 13:07:54 INFO  Data:42 - Written to file output.json
