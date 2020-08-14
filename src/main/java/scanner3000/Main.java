@@ -23,6 +23,7 @@ public class Main {
      * @throws InterruptedException
      * @throws IOException
      */
+
     public static void main(String[] args) throws InterruptedException, IOException {
 
         //scan -h yande x.ru -p 80-100, 101 -t 1
